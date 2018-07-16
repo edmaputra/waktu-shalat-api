@@ -116,10 +116,10 @@ public class PrayTime {
 
         // Time Names
         timeNames = new ArrayList<String>();
-        timeNames.add("Fajr");
+        timeNames.add("Subuh");
         timeNames.add("Sunrise");
-        timeNames.add("Dhuhr");
-        timeNames.add("Asr");
+        timeNames.add("Dhuhur");
+        timeNames.add("Ashar");
         timeNames.add("Sunset");
         timeNames.add("Maghrib");
         timeNames.add("Isha");
@@ -690,20 +690,23 @@ public class PrayTime {
         return times;
     }
 
-    public List getPrayTime(double latitude, double longitude, double timezone, int calcMethod){
-        setTimeFormat(this.Time12);
-        setCalcMethod(this.MWL);
+    public List getPrayTime(double latitude, double longitude, double timezone, int calcMethod, Date tanggal){
+        setTimeFormat(this.Time24);
+
+        if (calcMethod != 3) {
+            setCalcMethod(calcMethod);
+        } else {
+            setCalcMethod(this.MWL);
+        }
         setAsrJuristic(this.Shafii);
         setAdjustHighLats(this.AngleBased);
         int[] offsets = {0, 0, 0, 0, 0, 0, 0}; // {Fajr,Sunrise,Dhuhr,Asr,Sunset,Maghrib,Isha}
         this.tune(offsets);
 
-        Date now = new Date();
         Calendar cal = Calendar.getInstance();
-        cal.setTime(now);
+        cal.setTime(tanggal);
 
-        ArrayList<String> prayerTimes = getPrayerTimes(cal,
-                latitude, longitude, timezone);
+        ArrayList<String> prayerTimes = getPrayerTimes(cal, latitude, longitude, timezone);
         ArrayList<String> prayerNames = getTimeNames();
 
         ArrayList<String> pray = new ArrayList<>();
