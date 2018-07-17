@@ -21,7 +21,9 @@ be useful, but WITHOUT ANY WARRANTY.
 PLEASE DO NOT REMOVE THIS COPYRIGHT BLOCK.
 
 */
-package com.edmaputra.waktushalat;
+package com.edmaputra.waktushalat.util;
+
+import com.edmaputra.waktushalat.model.ShalatDetail;
 
 import java.util.*;
 
@@ -703,15 +705,46 @@ public class PrayTime {
         int[] offsets = {0, 0, 0, 0, 0, 0, 0}; // {Fajr,Sunrise,Dhuhr,Asr,Sunset,Maghrib,Isha}
         this.tune(offsets);
 
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(tanggal);
+        Calendar date = Calendar.getInstance();
+        date.setTime(tanggal);
 
-        ArrayList<String> prayerTimes = getPrayerTimes(cal, latitude, longitude, timezone);
+        ArrayList<String> prayerTimes = getPrayerTimes(date, latitude, longitude, timezone);
         ArrayList<String> prayerNames = getTimeNames();
 
         ArrayList<String> pray = new ArrayList<>();
         for (int i = 0; i < prayerTimes.size(); i++) {
             pray.add(prayerNames.get(i) + " - " + prayerTimes.get(i));
+        }
+
+        return pray;
+
+    }
+
+    public List<ShalatDetail> getListPrayTime(double latitude, double longitude, double timezone, int calcMethod, Date tanggal){
+        setTimeFormat(this.Time24);
+
+        if (calcMethod != 3) {
+            setCalcMethod(calcMethod);
+        } else {
+            setCalcMethod(this.MWL);
+        }
+        setAsrJuristic(this.Shafii);
+        setAdjustHighLats(this.AngleBased);
+        int[] offsets = {0, 0, 0, 0, 0, 0, 0}; // {Fajr,Sunrise,Dhuhr,Asr,Sunset,Maghrib,Isha}
+        this.tune(offsets);
+
+        Calendar date = Calendar.getInstance();
+        date.setTime(tanggal);
+
+        ArrayList<String> prayerTimes = getPrayerTimes(date, latitude, longitude, timezone);
+        ArrayList<String> prayerNames = getTimeNames();
+
+        List<ShalatDetail> pray = new ArrayList<>();
+        for (int i = 0; i < prayerTimes.size(); i++) {
+            ShalatDetail detail = new ShalatDetail();
+            detail.setShalat(prayerNames.get(i));
+            detail.setWaktu(prayerTimes.get(i));
+            pray.add(detail);
         }
 
         return pray;
