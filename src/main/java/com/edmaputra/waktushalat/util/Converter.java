@@ -23,7 +23,7 @@ public class Converter {
     }
 
     public static String dateToString(Date date) {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat df = new SimpleDateFormat("ddMMyyyy");
         return df.format(date);
     }
 

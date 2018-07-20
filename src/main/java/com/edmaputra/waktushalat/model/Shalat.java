@@ -6,16 +6,13 @@ import java.util.List;
 public class Shalat {
 
     private String title;
-    private String pesan;
     private String wilayah;
-    private String tanggal_string;
+    private String tanggalString;
     private Date tanggal;
     private double timezone;
     private int metode;
     private String namaMetode;
     private List<ShalatDetail> shalats;
-
-    private String status;
 
     public String getTitle() {
         return title;
@@ -23,14 +20,6 @@ public class Shalat {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getPesan() {
-        return pesan;
-    }
-
-    public void setPesan(String pesan) {
-        this.pesan = pesan;
     }
 
     public String getWilayah() {
@@ -41,12 +30,12 @@ public class Shalat {
         this.wilayah = wilayah;
     }
 
-    public String getTanggal_string() {
-        return tanggal_string;
+    public String getTanggalString() {
+        return tanggalString;
     }
 
-    public void setTanggal_string(String tanggal_string) {
-        this.tanggal_string = tanggal_string;
+    public void setTanggalString(String tanggalString) {
+        this.tanggalString = tanggalString;
     }
 
     public Date getTanggal() {
@@ -87,13 +76,5 @@ public class Shalat {
 
     public void setShalats(List<ShalatDetail> shalats) {
         this.shalats = shalats;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 }
