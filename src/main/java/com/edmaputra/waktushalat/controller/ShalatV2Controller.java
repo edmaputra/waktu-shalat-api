@@ -43,11 +43,11 @@ public class ShalatV2Controller {
 
             if (valid(tanggal, metode, timezone) || valid) {
                 init();
-                if (!tanggal != null || !tanggal.isEmpty()) {
+                if (tanggal != null || !tanggal.isEmpty()) {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
                     this.tanggal = LocalDate.parse(tanggal, formatter);
                 }
-                if (!lokasi != null || !lokasi.isEmpty()) {
+                if (lokasi != null || !lokasi.isEmpty()) {
                     this.lokasi = lokasi;
                 }
                 this.metode = metode;

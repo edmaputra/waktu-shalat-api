@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../../css/style.css" />
+    <title>ISLAM API</title>
+</head>
+<body class="container">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">ISLAM API</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <span class="navbar-text">
+           <a class="nav-link" href="https://edmaputra.com">edmaputra.com</a>
+        </span>
+    </div>
+</nav>
+<br />
+<h4><strong>Assalamualaikum Warahmatullahi Wabarokatuh</strong></h4>
+<p>Selamat Datang di Islam API by edmaputra. API ini dibuat untuk para rekan-rekan yang ingin membuat suatu aplikasi yang di dalamnya ada fitur untuk menampilkan waktu shalat untuk daerah tertentu di seluruh dunia.</p>
+<p>Terima Kasih untuk <a href="http://praytimes.org/">PrayTimes.org</a> untuk metode perhitungan waktu shalat, dan <a href="https://cloud.google.com/maps-platform/">Google Maps API</a> untuk mendukung pencarian lokasi.</p>
+<p>Parameter Query yang bisa digunakan adalah sebagai berikut :</p>
+
+<h4><Strong>Berdasarkan Tanggal </strong><small>(default value : tanggal hari ini)</small></h4>
+<strong>URL :</strong>
+<div class="syntaks">shalat?d=ddMMyyyy</div>
+<ul>
+    <li>Parameter 'd' untuk tanggal</li>
+    <li>Format Tanggal ddMMyyyy</li>
+</ul>
+<strong>Contoh:</strong><
+<ul class="list-unstyled">
+    <li><div class="syntaks">https://islam.edmaputra.com/shalat?d=08072018</div></li>
+</ul>
+<hr />
+<h4><Strong>Berdasarkan Lokasi </strong><small>(default value : "samarinda")</small></h4>
+<strong>URL :</strong>
+<div class="syntaks">shalat?l=lokasi</div>
+<ul>
+    <li>Parameter 'l' untuk lokasi</li>
+    <li>Jika ada spasi dalam pencarian lokasi, ganti dengan karakter "+"</li>
+    <li>Case-Insensitive</li>
+</ul>
+<strong>Contoh:</strong>
+<ul class="list-unstyled">
+    <li><div class="syntaks">https://islam.edmaputra.com/shalat?l=samarinda</div></li>
+    <li><div class="syntaks">https://islam.edmaputra.com/shalat?l=Jalan+Kolonel+Soetadji</div></li>
+    <li><div class="syntaks">https://islam.edmaputra.com/shalat?l=tenggarong+kutai+kartanegara</div></li>
+</ul>
+<hr />
+<h4><Strong>Berdasarkan Zona Waktu (Timezone) </strong><small>(default value : 8.0)</small></h4>
+<strong>URL :</strong>
+<div class="syntaks">shalat?t=timezone</div>
+<ul>
+    <li>Parameter 'l' untuk lokasi</li>
+    <li>Rentang Timezone -10 s/d 14</li>
+</ul>
+<strong>Contoh:</strong>
+<ul class="list-unstyled">
+    <li><div class="syntaks">https://islam.edmaputra.com/shalat?t=-4</div></li>
+</ul>
+<hr />
+<h4><Strong>Berdasarkan Metode Perhitungan </strong><small>(default value : 3)</small></h4>
+<strong>URL :</strong>
+<div class="syntaks">shalat?m=metode</div>
+<ul>
+    <li>Parameter 'm' untuk Metode Perhitungan</li>
+    <li>Rentang Metode 0 s/d 6</li>
+    <ul>
+        <li>0 : Ithna Ashari</li>
+        <li>1 : University of Islamic Sciences, Karachi</li>
+        <li>2 : Islamic Society of North America (ISNA)</li>
+        <li>3 : Muslim World League (MWL)</li>
+        <li>4 : Umm al-Qura, Makkah</li>
+        <li>5 : Egyptian General Authority of Survey</li>
+        <li>6 : Institute of Geophysics, University of Tehran</li>
+    </ul>
+</ul>
+<strong>Contoh:</strong>
+<ul class="list-unstyled">
+    <li><div class="syntaks">https://islam.edmaputra.com/shalat?m=5</div></li>
+</ul>
+<hr />
+
+<p>Semua Parameter di atas bisa dikombinasikan tanpa memperhatikan urutan parameternya</p>
+<strong>Contoh :</strong>
+<ul class="list-unstyled">
+    <li><div class="syntaks">https://islam.edmaputra.com/shalat?l=samarinda&d=08072019</div></li>
+    <li><div class="syntaks">https://islam.edmaputra.com/shalat?d=11112011&l=balikpapan+selatan&m=5</div></li>
+    <li><div class="syntaks">https://islam.edmaputra.com/shalat?m=5&t=9&l=new+york</div></li>
+</ul>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+</body>
+</html>
