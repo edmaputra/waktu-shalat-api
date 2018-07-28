@@ -10,6 +10,8 @@ import com.edmaputra.waktushalat.util.GoogleMapsApi;
 import com.edmaputra.waktushalat.util.PrayTime;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -35,6 +37,10 @@ public class ShalatV2Controller {
     @ResponseBody
     @ApiOperation(response = ReturnValue.class, value = "Mendapatkan waktu Shalat dengan parameter tanggal, " +
             "lokasi, metode kalkukasi dan zona waktu =(timezone)")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Pengambilan Data Sukses"),
+            @ApiResponse(code = 404, message = "Resource Tidak Ditemukan")
+    })
     public ReturnValue getShalat(@RequestParam(value = "d", required = false) String tanggal,
                                  @RequestParam(value = "l", defaultValue = "samarinda", required = false) String lokasi,
                                  @RequestParam(value = "m", defaultValue = "3", required = false) int metode,
