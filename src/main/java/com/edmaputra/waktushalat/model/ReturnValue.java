@@ -1,9 +1,16 @@
 package com.edmaputra.waktushalat.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class ReturnValue {
 
+    @ApiModelProperty(notes = "Hasil dari pencarian")
     private Shalat result;
+
+    @ApiModelProperty(notes = "Pesan dari status response")
     private String pesan;
+
+    @ApiModelProperty(notes = "Status Response")
     private String status;
 
     public Shalat getResult() {
