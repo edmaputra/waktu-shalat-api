@@ -1,17 +1,36 @@
 package com.edmaputra.waktushalat.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 import java.util.List;
 
 public class Shalat {
 
+    @ApiModelProperty(notes = "Title")
     private String title;
+
+    @ApiModelProperty(notes = "Wilayah yang diinput")
     private String wilayah;
+
+    @ApiModelProperty(notes = "Tanggal dalam tipe String")
     private String tanggalString;
+
+    @ApiModelProperty(notes = "Tanggal dalam type Date")
     private Date tanggal;
+
+    @ApiModelProperty(notes = "Zona Waktu/Timezone")
     private double timezone;
+
+    @ApiModelProperty(notes = "Metode Kalkulasi dengan pilihan 0 : Ithna Ashari; 1 : University of Islamic Sciences, Karachi; 2 : Islamic Society of North America (ISNA); " +
+            "3 : Muslim World League (MWL); 4 : Umm al-Qura, Makkah; " +
+            "5 : Egyptian General Authority of Survey; 6 : Institute of Geophysics, University of Tehran")
     private int metode;
+
+    @ApiModelProperty(notes = "Nama Metode Kalkulasi")
     private String namaMetode;
+
+    @ApiModelProperty(notes = "Shalat Detail Entity")
     private List<ShalatDetail> shalats;
 
     public String getTitle() {

@@ -4,13 +4,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class ReturnValue {
 
-    @ApiModelProperty(notes = "Hasil dari pencarian")
+    @ApiModelProperty(notes = "Hasil dengan Shalat Model")
     private Shalat result;
 
-    @ApiModelProperty(notes = "Pesan dari status response")
+    @ApiModelProperty(notes = "Pesan Hasil Pencarian")
     private String pesan;
 
-    @ApiModelProperty(notes = "Status Response")
+    @ApiModelProperty(notes = "Pesan Status Response")
     private String status;
 
     public Shalat getResult() {
